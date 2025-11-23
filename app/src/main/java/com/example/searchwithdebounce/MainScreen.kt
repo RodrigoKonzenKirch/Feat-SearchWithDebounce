@@ -17,6 +17,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -38,7 +39,7 @@ fun MainScreen(
         val isSearching = query.isNotEmpty()
 
         Text(
-            text = "Search for cities",
+            text = stringResource(R.string.main_screen_search_message),
             style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.padding(top = 32.dp)
         )
@@ -49,7 +50,7 @@ fun MainScreen(
                 .padding(16.dp),
             value = query,
             onValueChange = viewModel::onSearchQueryChanged,
-            label = { Text("City name") },
+            label = { Text(stringResource(R.string.main_screen_textfield_city_name)) },
             singleLine = true
         )
 
@@ -58,7 +59,7 @@ fun MainScreen(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                Text("No results found")
+                Text(stringResource(R.string.main_screen_no_results_found))
             }
         } else {
             LazyColumn(
