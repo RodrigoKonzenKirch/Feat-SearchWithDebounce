@@ -18,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
@@ -32,8 +33,8 @@ fun MainScreen(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        val query by viewModel.searchQuery.collectAsState()
-        val results by viewModel.searchResults.collectAsState()
+        val query by viewModel.searchQuery.collectAsStateWithLifecycle()
+        val results by viewModel.searchResults.collectAsStateWithLifecycle()
         val isSearching = query.isNotEmpty()
 
         Text(
